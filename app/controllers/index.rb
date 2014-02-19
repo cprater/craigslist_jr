@@ -32,7 +32,7 @@ get '/:category_id/:post_id' do
 end
 
 # get '/:category_id/:post_id/edit' do
-#   @post = Post.find(params[:post_id])
+#   @post = Post.find(params[:post_id]) 
 #   erb :edit_post
 # end
 
