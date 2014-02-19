@@ -14,9 +14,16 @@ get '/:category_id' do
 end
 
 get '/:category_id/new' do
+  
+  @id = params[:category_id]
   # binding.pry
   @category = Category.find(params[:category_id])
   erb :create_post
+end
+
+get '/post/edit' do
+  @post = Post.find(@post_id)
+  erb :edit_post
 end
 
 get '/:category_id/:post_id' do
@@ -24,11 +31,17 @@ get '/:category_id/:post_id' do
   erb :post
 end
 
-get '/:category_id/:post_id/:pin' do
-  erb :edit_post
-end
+# get '/:category_id/:post_id/edit' do
+#   @post = Post.find(params[:post_id])
+#   erb :edit_post
+# end
 
 get '/categories/new' do
+end
+
+post '/posts' do
+  Post.create(params[:post])
+  erb :index
 end
 
 post '/new_category' do
@@ -36,17 +49,8 @@ post '/new_category' do
   redirect to '/'
 end
 
-post '/:category_id/new' do
-  p params[:category_id]
-  # @pin_number = rand(00..99)
-  # Post.create(title: params[:title], content: params[:content], category_id: params[:category_id])
-  # Post.create(title: params[:post_title], content: params[:post_content])
-  erb :index
-  # @edit_page_url = "localhost:9393/#{new_post.category_id}/#{new_post.id}/#{new_post.pin}"
-  # binding.pry
-  # @category = Category.find(params[:category_id])
-  # @category.posts << Post.new(params[:post])
-  # erb :post_confirmation
+post '/post/edit' do 
+  Post.update(content: params[:content])
 end
 
 
