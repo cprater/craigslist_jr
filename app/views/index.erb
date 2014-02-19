@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Welcome to Craigslist Jr!</h1>
+  <h2>Categories are:</h2>
+  <ul>
+    <%Category.all.each do |field|%>
+      <li><a href="/<%=field.id %>"><%=field.name%></a></li>
+    <%end%>
+  </ul>
+  <a href="/new_category">Create Category</a>
+</div>
