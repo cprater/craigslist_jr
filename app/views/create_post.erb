@@ -5,8 +5,8 @@
 
 	<form action='/posts'method="POST">
 	  <label for="post_name">Title: </label>
-	  <input type="text" name="post[title]" id="post_name">
-	  <label for="post_text">Content: </label><br>
+	  <input type="text" name="post[title]" id="post_name"><br>
+	  <label for="post_text">Content: </label>
 	  <textarea name="post[content]" id="post_text"></textarea>
 	  <input style="display: none" type="text" name="post[category_id]" value="<%=@id%>">
 	  <input type="submit">
