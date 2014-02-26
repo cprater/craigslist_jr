@@ -28,7 +28,7 @@
 
     <%if session[:current_user]%>
       <li class="right-nav"><a href='/logout'>Logout</a></li>
-      <li class="right-nav"><a href='/profile/session[:current_user]'>Profile Page</a></li>
+      <li class="right-nav"><a href='/profile/<%=session[:current_user]%>'>Profile Page</a></li>
     <%else%>
       <li class="right-nav"><a href="/login">Login/Create User</a></li>
     <%end%>

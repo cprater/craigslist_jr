@@ -1,0 +1,10 @@
+<div class="container">
+  <%if @no_user%>
+    <h1>THAT USER DON'T EXIST YO</h1>
+  <%else%>
+    <h1><%=@user.user_name%></h1>
+    <p><%=@user.about%></p>
+    <a href="#">Comments</a><br><br>
+    <a href="#">Posts</a>
+  <%end%>
+</div>

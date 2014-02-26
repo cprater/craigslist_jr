@@ -16,6 +16,15 @@ get '/create_post' do
   erb :create_post
 end
 
+get '/profile/:user_id' do
+  @user = User.find(params[:user_id])
+  if !@user
+    @no_user
+  end
+
+ erb :profile
+end
+
 get '/post/:post_id' do
   @post = Post.find(params[:post_id])
   erb :post
@@ -60,11 +69,10 @@ post '/create_post' do
 end
 
 post '/post/:post_id/add_comment' do
-  comment = Comment.new(user_id: session[:current_user],post_id: params[:post_id], content: params[:content])
-
-  if comment.save
-    redirect '/post/params[:post_id]'
-  end
+  p params
+  # binding.pry
+  comment = Comment.create(user_id: session[:current_user], post_id: params[:post_id], content: params[:content])
+  redirect "/post/#{params[:post_id]}"
 end
 
 
