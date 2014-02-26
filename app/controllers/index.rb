@@ -68,6 +68,13 @@ post '/create_post' do
   end
 end
 
+post '/user_comments' do
+  # binding.pry
+  content_type :json
+  comments = User.find(params[:user_id]).comments.all
+  comments.to_json
+end
+
 post '/post/:post_id/add_comment' do
   p params
   # binding.pry
