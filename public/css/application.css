@@ -21,9 +21,10 @@
   margin: 10px 30px;
 }
 
-.top-nav li:last-child{
+.right-nav {
   float: right;
   padding-right: 20px;
+  /*padding-left: 0px;*/
 }
 
 th {

@@ -1,0 +1,14 @@
+<div class="container">
+  <form action='/create_post' method='POST'>
+    Create Post
+    <input type="text" name="post[title]" placeholder="Title">
+    <input type="text" name="post[link]" placeholder="url [leave blank for self posts]">
+    <TEXTAREA name="post[content]" placeholder="content"></TEXTAREA>
+    <input type="submit" value="Submit">
+  </form>
+  <div class="error">
+    <%if @no_title%>
+      <p> You need to enter a title.</p>
+    <%end%>
+  </div>
+</div>

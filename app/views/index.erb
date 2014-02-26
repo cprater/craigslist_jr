@@ -2,6 +2,6 @@
   <h1>Reddit Jr.</h1>
 
   <%@posts.each do |post|%>
-    <h2><a href='/<%=post.id%>'><%=post.title%></a></h2>
+    <div class="post"><h2><a href='/post/<%=post.id%>'><%=post.title%></a></h2><p><a href='<%=post.link%>'><%=post.link%></a><p></div>
   <%end%>
 </div>

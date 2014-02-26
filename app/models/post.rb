@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
   has_many :comments
 
-  validates_presence_of :title, :content
+  validates_presence_of :title
 end

@@ -13,13 +13,17 @@
     <%if @no_password%>
       <p> Incorrect password or something like that.</p>
     <%end%>
+
+    <%if @name_error%>
+      <p> Username already taken. We're very popular. Sorry dude!! </p>
+    <%end%>
   </div>
 
   <span class="login-divider">-OR-</span>
 
   <form action='/create_user' method='POST'>
     Create an account:
-    <input type="text" name="user_name" placeholder="User Name">
+    <input type="text" name="user[user_name]" placeholder="User Name">
     <textarea name="user[about]" placeholder="About you... because we care"></textarea>
     <input type="password" name="user[password]" placeholder="Password">
     <input type="password" name="user[password_confirmation]" placeholder="Confirm Password...  because we care">

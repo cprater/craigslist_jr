@@ -20,12 +20,17 @@
 <body>
   <ul class="top-nav">
     <li><a href="/">Home</a></li>
-    <li><a href="/create_post">New Post</a></li>
+    <%if session[:current_user]%>
+      <li><a href="/create_post">New Post</a></li>
+    <%else%>
+      <li><a href="/login">New Post</a></li>
+    <%end%>
 
     <%if session[:current_user]%>
-      <li><a href='/profile/session[:current_user]'>Profile Page</a></li>
+      <li class="right-nav"><a href='/logout'>Logout</a></li>
+      <li class="right-nav"><a href='/profile/session[:current_user]'>Profile Page</a></li>
     <%else%>
-      <li><a href="/login">Login/Create User</a></li>
+      <li class="right-nav"><a href="/login">Login/Create User</a></li>
     <%end%>
   </ul>
   <br>
