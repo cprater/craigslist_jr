@@ -1,5 +1,5 @@
 get '/' do
-  @posts = Post.all
+  @posts = Post.find(:all, :order => "created_at desc", :limit => 10)
   erb :index
 end
 

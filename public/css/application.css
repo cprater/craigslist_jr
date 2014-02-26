@@ -37,6 +37,5 @@ th {
 
 .post-url {
   float: right;
-  position: relative;
-
+  display: block;
 }
