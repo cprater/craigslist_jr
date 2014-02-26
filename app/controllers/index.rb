@@ -1,50 +1,39 @@
 get '/' do
-  #list all posts in category w/ catg
+  @posts = Post.all
   erb :index
 end
 
-get '/new_category' do
-  erb :new_category
+get '/login' do
+  erb :login
 end
 
-get '/:category_id' do
-  @category_id = params[:category_id]
-  @posts = Post.where(category_id: params[:category_id])
-  erb :list_posts
-end
-
-get '/:category_id/new' do  
-  @id = params[:category_id]
-  @category = Category.find(params[:category_id])
-  erb :create_post
-end
-
-get '/:post_id/edit' do
-  @post = Post.find(params[:post_id])
-  erb :edit_post
-end
-
-get '/:category_id/:post_id' do
+get '/:post_id' do
   @post = Post.find(params[:post_id])
   erb :post
 end
 
-get '/categories/new' do
+
+#POST ===============================================================
+
+post '/login' do
+  user = User.find_by_user_name(params[:user_name])
+  if user == nil
+    @no_user = true
+  elsif user.authenticate(params[:password])
+    session[:current_user] = user.id
+    redirect '/'
+  else
+    @no_password = true
+  end
+  erb :login
 end
 
-post '/posts' do
-  Post.create(params[:post])
-  erb :index
+post '/create_user' do
+  user = User.new(params[:user])
+
+  if
+
+
 end
 
-post '/new_category' do
-  Category.create(name: params[:name])
-  redirect to '/'
-end
-
-post '/post/edit' do 
-  @post = Post.find(params[:post_id])
-  @post.update_attributes(content: params[:content])
-  erb :post
-end
 

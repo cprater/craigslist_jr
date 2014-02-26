@@ -15,6 +15,8 @@ require 'pg'
 require 'active_record'
 require 'logger'
 
+require 'bcrypt'
+
 require 'pry'
 require 'pry-nav'
 

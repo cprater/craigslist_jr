@@ -1,0 +1,30 @@
+<div class="container">
+  <form action='/login' method='POST'>
+    Login info:
+    <input type="text" name="user_name" placeholder="User Name">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" value="Login">
+  </form><br><br>
+  <div class="error">
+    <%if @no_user%>
+      <p> User with that username does not exist.</p>
+    <%end%>
+
+    <%if @no_password%>
+      <p> Incorrect password or something like that.</p>
+    <%end%>
+  </div>
+
+  <span class="login-divider">-OR-</span>
+
+  <form action='/create_user' method='POST'>
+    Create an account:
+    <input type="text" name="user_name" placeholder="User Name">
+    <textarea name="user[about]" placeholder="About you... because we care"></textarea>
+    <input type="password" name="user[password]" placeholder="Password">
+    <input type="password" name="user[password_confirmation]" placeholder="Confirm Password...  because we care">
+    <input type="submit" value="Create Account">
+  </form>
+
+
+</div>

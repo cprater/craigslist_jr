@@ -1,9 +1,5 @@
 class Post < ActiveRecord::Base
-  # Remember to create a migration!
-  belongs_to :category
+  has_many :comments
 
-  # def initialize
-  #   self.pin = (0000..9999).rand
-  # end
+  validates_presence_of :title, :content
 end
-

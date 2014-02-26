@@ -13,6 +13,8 @@ gem 'thin'
 gem 'pry'
 gem 'pry-nav'
 
+gem 'bcrypt-ruby'
+
 gem 'activesupport'
 gem 'activerecord'
 
