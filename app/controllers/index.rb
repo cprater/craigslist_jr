@@ -58,9 +58,11 @@ post '/create_user' do
 end
 
 post '/create_post' do
+  user = User.find(session[:current_user])
   post = Post.new(params[:post])
 
-  if post.save
+  if post.valid?
+    user.posts << post
     redirect "/post/#{post.id}"
   else
     @no_title = true
@@ -69,15 +71,25 @@ post '/create_post' do
 end
 
 post '/user_comments' do
-  # binding.pry
-  content_type :json
-  comments = User.find(params[:user_id]).comments.all
-  comments.to_json
+  if request.xhr?
+    @comments = User.find(params[:user_id]).comments.all
+    erb :_user_comments, layout: false
+  else
+    erb :index
+  end
+end
+
+
+post '/user_posts' do
+  if request.xhr?
+    @posts = User.find(params[:user_id]).posts.all
+    erb :_user_posts, layout: false
+  else
+    erb :index
+  end
 end
 
 post '/post/:post_id/add_comment' do
-  p params
-  # binding.pry
   comment = Comment.create(user_id: session[:current_user], post_id: params[:post_id], content: params[:content])
   redirect "/post/#{params[:post_id]}"
 end

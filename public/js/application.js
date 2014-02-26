@@ -5,19 +5,27 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com
 
-  $('#profile_comments').on('click', function(){
-    // console.log('here')
+  $('#profile_comments').on('click', function(event){
+    event.preventDefault();
+
     var data = {
-      user_id: 1
+      user_id: $(this).attr('href')
     }
 
     $.post('/user_comments', data, function(serverResponse){
-      console.log(serverResponse);
-    }, 'json');
-
-
-
+      $('#results').html(serverResponse);
+    });
   });
 
+  $('#profile_posts').on('click', function(event){
+    event.preventDefault();
 
+    var data = {
+      user_id: $(this).attr('href')
+    }
+
+    $.post('/user_posts', data, function(serverResponse){
+      $('#results').html(serverResponse);
+    });
+  });
 });

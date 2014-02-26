@@ -4,7 +4,16 @@
   <%else%>
     <h1><%=@user.user_name%></h1>
     <p><%=@user.about%></p>
-    <a id="profile_comments" href="#">Comments</a><br><br>
-    <a id="profile_posts" href="#">Posts</a>
+    <a id="profile_comments" href="<%=@user.id%>">Comments</a><br><br>
+    <a id="profile_posts" href="<%=@user.id%>">Posts</a>
   <%end%>
+
+  <div id="results">
+    <% if @comments %>
+      <%= erb :_user_comments, layout: false %>
+    <%end%>
+    <% if @posts %>
+      <%= erb :_user_posts, layout: false %>
+    <%end%>
+  </div>
 </div>
