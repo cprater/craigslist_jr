@@ -1,5 +1,5 @@
 get '/' do
-  @posts = Post.find(:all, :order => "created_at desc", :limit => 10)
+  @posts = Post.find(:all, :order => "votes desc", :limit => 10)
   erb :index
 end
 
@@ -89,11 +89,19 @@ post '/user_posts' do
   end
 end
 
-post '/post/up_vote' do 
-  p params
+post '/post/up_vote' do
   content_type :json
   post = Post.find(params[:post_id])
   vote = (post.votes += 1)
+  post.save
+  vote.to_json
+end
+
+post '/post/vote_down' do 
+  # binding.pry
+  content_type :json
+  post = Post.find(params[:post_id])
+  vote = (post.votes -= 1)
   post.save
   vote.to_json
 end

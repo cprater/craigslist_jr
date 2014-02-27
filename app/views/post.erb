@@ -2,6 +2,9 @@
   <h2><%=@post.title%>  -- <a href="<%=@post.link%>"><%=@post.link%></a></h2>
     <p><%=@post.content%><p>
     <p><%=@post.comments.count%> comments</p>
+    <p>score: <span id="<%=@post.id%>"><%=@post.votes%></span>
+    <a href="<%=@post.id%>" class="vote-up">voteUp</a>
+    <a href="<%=@post.id%>" class="vote-down">voteDown</a></p>
 
   <h4>Comments</h4>
   <%if session[:current_user]%>

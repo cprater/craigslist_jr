@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     var data = {
       user_id: $(this).attr('href')
-    }
+    };
 
     $.post('/user_comments', data, function(serverResponse){
       $('#results').html(serverResponse);
@@ -22,25 +22,38 @@ $(document).ready(function() {
 
     var data = {
       user_id: $(this).attr('href')
-    }
+    };
 
     $.post('/user_posts', data, function(serverResponse){
       $('#results').html(serverResponse);
     });
   });
 
-  $('#vote-up').on('click', function(event){
+  $('.vote-up').on('click', function(event){
     event.preventDefault();
 
-    var score_id = $(this).attr('href')    
+    var score_id = $(this).attr('href');
     var data = {
       post_id: $(this).attr('href')
-    }
+    };
 
     $.post('/post/up_vote', data, function(serverResponse){
       $('#' + score_id).html(serverResponse);
-    },'json')
-  })
+    },'json');
+  });
+
+  $('.vote-down').on('click', function(event){
+    event.preventDefault();
+
+    var score_id = $(this).attr('href');
+    var data = {
+      post_id: $(this).attr('href')
+    };
+
+    $.post('/post/vote_down', data, function(serverResponse){
+      $('#' + score_id).html(serverResponse);
+    },'json');
+  });
 });
 
 
