@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :link
       t.text :content
-      t.integer :votes
+      t.integer :votes, :default => 0
 
       t.timestamps
     end

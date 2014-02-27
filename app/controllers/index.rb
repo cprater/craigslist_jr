@@ -89,6 +89,15 @@ post '/user_posts' do
   end
 end
 
+post '/post/up_vote' do 
+  p params
+  content_type :json
+  post = Post.find(params[:post_id])
+  vote = (post.votes += 1)
+  post.save
+  vote.to_json
+end
+
 post '/post/:post_id/add_comment' do
   comment = Comment.create(user_id: session[:current_user], post_id: params[:post_id], content: params[:content])
   redirect "/post/#{params[:post_id]}"

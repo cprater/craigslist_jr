@@ -3,7 +3,7 @@
 
   <%@posts.each_with_index do |post, index|%>
     <div class="post"><h2><%="#{index + 1}.  "%><a href='/post/<%=post.id%>'><%=post.title%></a></h2><p><a class="post-url" href='<%=post.link%>'><%=post.link%></a>
-      <p>
+      <p>score: <span id="<%=post.id%>"><%=post.votes%></span> <a href="<%=post.id%>" id="vote-up">voteUp</a> <a href="<%=post.id%>" id="vote-down">voteDown</a></p>
       <p><%=post.comments.count%> comments -- <%=post.created_at%></p>
       </div>
   <%end%>

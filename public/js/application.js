@@ -28,4 +28,37 @@ $(document).ready(function() {
       $('#results').html(serverResponse);
     });
   });
+
+  $('#vote-up').on('click', function(event){
+    event.preventDefault();
+
+    var score_id = $(this).attr('href')    
+    var data = {
+      post_id: $(this).attr('href')
+    }
+
+    $.post('/post/up_vote', data, function(serverResponse){
+      $('#' + score_id).html(serverResponse);
+    },'json')
+  })
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
